@@ -1,0 +1,60 @@
+
+# Name your project! Project names should contain only lowercase characters
+# and underscores. A good package name should reflect your organization's
+# name or the intended use of these models
+name: 'northwind_traders_elt'
+version: '1.0.0'
+
+# This setting configures which "profile" dbt uses for this project.
+profile: "{{ env_var('DBT_PROFILE_TARGET') }}"
+
+# These configurations specify where dbt should look for different types of files.
+# The `model-paths` config, for example, states that models in this project can be
+# found in the "models/" directory. You probably won't need to change these!
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+clean-targets:         # directories to be removed by `dbt clean`
+  - "target"
+  - "dbt_packages"
+
+require-dbt-version: [">=1.7.0", "<2.0.0"]
+
+# Configuring models
+models:
+
+  +file_format: delta
+
+  +persist_docs:
+    relation: "{{ target.name in ('prod', 'ci') }}"
+    columns: "{{ target.name in ('prod', 'ci') }}"
+  northwind_traders_elt:
+    +database: "{% if target.name in ('prod', 'ci') %} northwind_prd {% else %} northwind_dev {% endif %}"
+    staging:
+      +materialized: view
+      +schema: staging
+    intermediate:
+      +materialized: view
+      +schema: intermediate
+    marts:
+      +materialized: table
+      +schema: marts
+
+
+seeds:
+  northwind_traders_elt:
+    +file_format: delta
+    +database: "{% if target.name in ('prod', 'ci') %} northwind_prd {% else %} northwind_dev {% endif %}"
+    +schema: marts
+
+# Configuring snapshots
+snapshots:
+
+  +persist_docs:
+    relation: "{{ target.name in ('prod', 'ci') }}"
+    columns: "{{ target.name in ('prod', 'ci') }}"
+  +target_schema: "{{ 'snapshots' if target.name == 'prod' else target.schema }}"
