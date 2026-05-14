@@ -31,7 +31,7 @@ CREATE SCHEMA IF NOT EXISTS northwind_prod.intermediate
 COMMENT 'Enriched data and applied business rules';
 
 CREATE SCHEMA IF NOT EXISTS northwind_prod.marts
-COMMENT 'Aggregated and ready-to-use data (BI/Analytics)';
+COMMENT 'Aggregated and ready-to-use data (BI/Analytics/ML)';
 
 -- ================================================================================
 -- VERIFICATION - List created catalogs
