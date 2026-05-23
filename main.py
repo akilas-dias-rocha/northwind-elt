@@ -1,15 +1,23 @@
-import kagglehub
+import sqlite3
+import pandas as pd
 import os
 
-def download_data():
-    base_dir = os.path.dirname(os.path.abspath(__file__))
-    output_dir = os.path.join(base_dir, "northwind_data")
-    
-    path = kagglehub.dataset_download(
-        "jeetahirwar/northwind-traders",
-        output_dir=output_dir
-    )
-    print(f"Dataset downloaded on: {path}")
+db_path = os.getenv("DB_PATH")
 
-if __name__ == "__main__":
-    download_data()
+try:
+    conn = sqlite3.connect(db_path)
+    print("Conexão bem-sucedida!")
+
+    # Lista todas as tabelas do banco
+    tables = pd.read_sql("SELECT name FROM sqlite_master WHERE type='table'", conn)
+    print(tables)
+
+    # Lê uma tabela específica
+    df = pd.read_sql("SELECT * FROM Customer LIMIT 5", conn)
+    print(df)
+
+except sqlite3.Error as e:
+    print(f"Erro ao conectar: {e}")
+
+finally:
+    conn.close()

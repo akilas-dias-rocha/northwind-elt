@@ -3,3 +3,5 @@ dbt-databricks==1.9.3
 sqlfluff==3.0.7
 sqlfluff-templater-dbt==3.0.7
 kagglehub==1.0.1
+
+pandas==2.2.3
