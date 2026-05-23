@@ -9,8 +9,11 @@
 CREATE CATALOG IF NOT EXISTS northwind_raw_data
 COMMENT 'Raw data';
 
-CREATE SCHEMA IF NOT EXISTS northwind_raw_data.source_kaggle_api
-COMMENT 'Source - Kaggle API';
+CREATE SCHEMA IF NOT EXISTS northwind_raw_data.source_sql_db
+COMMENT 'Source - SQLite database';
+
+CREATE VOLUME IF NOT EXISTS northwind_raw_data.source_sql_db.raw_files
+COMMENT "Raw files"
 
 -- ================================================================================
 -- 2. DEVELOPMENT CATALOG - Individual dev workspace
