@@ -1,3 +1,9 @@
+{{
+    config(
+        alias='employee_territory'
+    )
+}}
+
 with source as (
 
     select * from {{ source('northwind', 'employeeterritory') }}

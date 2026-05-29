@@ -1,3 +1,9 @@
+{{
+    config(
+        alias='product'
+    )
+}}
+
 with source as (
 
     select * from {{ source('northwind', 'product') }}

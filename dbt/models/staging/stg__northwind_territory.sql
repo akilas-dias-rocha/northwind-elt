@@ -1,3 +1,9 @@
+{{
+    config(
+        alias='territory'
+    )
+}}
+
 with source as (
 
     select * from {{ source('northwind', 'territory') }}
