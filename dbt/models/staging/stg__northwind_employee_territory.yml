@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg__northwind_employee_territory
+    description: >
+      Staging model for the employee territories. It serves as an intermediate step in the
+      data transformation process, allowing for data cleaning and preparation before being
+      used in downstream models.
+    columns:
+      - name: id
+        data_type: string
+        description: >
+          The unique identifier for each record in the `employee_territories` table.
+
+      - name: employee_id
+        data_type: int
+        description: >
+          The identifier for the employee. This field links the employee territory
+          to a specific employee in the `employees` table.
+
+      - name: territory_id
+        data_type: int
+        description: >
+          The identifier for the territory. This field links the employee territory
+          to a specific territory in the `territories` table.

@@ -1,0 +1,60 @@
+version: 2
+
+models:
+  - name: stg__northwind_customer
+    description: >
+      This model represents the staging layer. It serves as a clean and organized representation of the raw customer data, making it easier to work with in subsequent transformations and analyses.
+    columns:
+      - name: customer_id
+        data_type: string
+        description: >
+           The unique identifier for a customer.
+
+      - name: company_name
+        data_type: string
+        description: >
+           The name of the customer's company.
+      - name: contact_name
+        data_type: string
+        description: >
+           The name of the customer's contact person.
+
+      - name: contact_title
+        data_type: string
+        description: >
+            The title of the customer's contact person.
+
+      - name: address
+        data_type: string
+        description: >
+            The street address of the customer.
+
+      - name: city
+        data_type: string
+        description: >
+            The city where the customer is located.
+
+      - name: region
+        data_type: string
+        description: >
+            The region or state where the customer is located.
+
+      - name: postal_code
+        data_type: string
+        description: >
+            The postal code of the customer's location.
+
+      - name: country
+        data_type: string
+        description: >
+            The country where the customer is located.
+
+      - name: phone
+        data_type: string
+        description: >
+            The phone number of the customer.
+
+      - name: fax
+        data_type: string
+        description: >
+            The fax number of the customer.

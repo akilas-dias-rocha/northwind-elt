@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: stg__northwind_customer_customer_demo
+    description: >
+      This is a staging model for the `customer_customer_demo` table from the Northwind database. It serves as an intermediate step in the data transformation process, allowing for data cleaning and preparation before being used in downstream models.
+    columns:
+      - name: id
+        data_type: int
+        description: >
+          The unique identifier for each record in the `customer_customer_demo` table. This field is typically used as a primary key to ensure that each record can be uniquely identified.
+
+      - name: customer_type_id
+        data_type: string
+        description: >
+          The identifier for the type of customer. This field links the customer to a specific customer type in the `customer_types` table.

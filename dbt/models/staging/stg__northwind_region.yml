@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg__northwind_region
+    description: >
+      Staging model for the regions. It serves as an intermediate step in the
+      data transformation process, allowing for data cleaning and preparation before being
+      used in downstream models.
+    columns:
+      - name: region_id
+        data_type: int
+        description: >
+          The unique identifier for each record in the `regions` table.''
+
+      - name: region_description
+        data_type: string
+        description: >
+          The description of the region. This field is used to provide a human-readable
+          name for the region and is often used in reporting and analysis.

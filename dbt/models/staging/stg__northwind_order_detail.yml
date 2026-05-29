@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: stg__northwind_order_detail
+    description: >
+      Staging model for the order details. It serves as an intermediate step in the
+      data transformation process, allowing for data cleaning and preparation before being
+      used in downstream models.
+    columns:
+      - name: order_detail_id
+        data_type: string
+        description: >
+          The unique identifier for each record in the `order_details` table. This field is used
+          to uniquely identify each order detail and is often used as a primary key in the staging model.
+
+      - name: order_id
+        data_type: int
+        description: >
+          The identifier for the order to which the detail belongs. This field is used to link the order
+          detail to its corresponding order.
+
+      - name: product_id
+        data_type: int
+        description: >
+          The identifier for the product associated with the order detail. This field is used to link the order
+          detail to its corresponding product.
+
+      - name: unit_price
+        data_type: decimal(10,2)
+        description: >
+          The price of the product per unit. This field is used to calculate the total cost of the order detail.
+
+      - name: quantity
+        data_type: int
+        description: >
+          The number of units of the product ordered. This field is used to calculate the total cost of the order detail.
+
+      - name: discount
+        data_type: decimal(10,2)
+        description: >
+          The discount applied to the order detail. This field is used to calculate the discounted cost of the order detail.

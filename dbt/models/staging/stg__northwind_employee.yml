@@ -1,0 +1,106 @@
+version: 2
+
+models:
+  - name: stg__northwind_employee
+    description: >
+      Staging model for the employees. It serves as an intermediate step in the
+      data transformation process, allowing for data cleaning and preparation before being
+      used in downstream models.
+    columns:
+      - name: employee_id
+        data_type: int
+        description: >
+          The unique identifier for each record in the `employees` table.
+
+      - name: last_name
+        data_type: string
+        description: >
+          The last name of the employee. This field is used to identify the employee
+          and is often used in conjunction with the `first_name` field for display
+          purposes.
+
+      - name: first_name
+        data_type: string
+        description: >
+          The first name of the employee. This field is used to identify the employee
+          and is often used in conjunction with the `last_name` field for display
+          purposes.
+
+      - name: title
+        data_type: string
+        description: >
+          The title of the employee. This field is used to identify the employee's role
+          or position within the organization.
+
+      - name: title_of_courtesy
+        data_type: string
+        description: >
+          The title of courtesy for the employee. This field is used to provide a polite
+          greeting when addressing the employee.
+
+      - name: birth_date
+        data_type: date
+        description: >
+          The birth date of the employee. This field is used for age calculation and
+          birthday-related communications.
+
+      - name: hire_date
+        data_type: date
+        description: >
+          The hire date of the employee. This field is used to calculate the employee's tenure and
+          for reporting purposes.
+
+      - name: address
+        data_type: string
+        description: >
+          The address of the employee. This field is used for communication and delivery purposes.
+
+      - name: city
+        data_type: string
+        description: >
+          The city where the employee resides. This field is used for location-based communications and reporting.
+
+      - name: region
+        data_type: string
+        description: >
+          The region where the employee resides. This field is used for location-based communications and reporting.
+
+      - name: postal_code
+        data_type: string
+        description: >
+          The postal code of the employee's address. This field is used for location-based communications and reporting.
+
+      - name: country
+        data_type: string
+        description: >
+          The country where the employee resides. This field is used for location-based communications and reporting.
+
+      - name: home_phone
+        data_type: string
+        description: >
+          The home phone number of the employee. This field is used for communication purposes.
+
+      - name: extension
+        data_type: int
+        description: >
+          The extension number for the employee's phone. This field is used for internal communication purposes.
+
+      - name: photo
+        data_type: string
+        description: >
+          The path to the employee's photo. This field is used for display purposes.
+
+      - name: notes
+        data_type: string
+        description: >
+          Additional notes about the employee. This field is used for internal documentation and communication purposes.
+
+      - name: reports_to
+        data_type: int
+        description: >
+          The identifier for the employee to whom the current employee reports. This field is used to establish the hierarchical structure of the organization.
+
+      - name: photo_path
+        data_type: string
+        description: >
+          The path to the employee's photo. This field is used for display purposes.

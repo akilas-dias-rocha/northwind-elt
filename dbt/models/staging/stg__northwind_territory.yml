@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg__northwind_territory
+    description: >
+      Staging model for the territories. Registers information about each territory, including the
+      description and the region it belongs to.
+    columns:
+      - name: territory_id
+        data_type: string
+        description: >
+          The unique identifier for each record in the `territories` table.
+
+      - name: territory_description
+        data_type: string
+        description: >
+          A description of the territory.
+
+      - name: region_id
+        data_type: int
+        description: >
+          The identifier for the region to which the territory belongs. This field links the territory
+          to a specific region in the `regions` table.

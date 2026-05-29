@@ -1,0 +1,19 @@
+version: 2
+
+models:
+  - name: stg__northwind_customer_demographic
+    description: >
+      This is a staging model for the `customer_demographics` table. It serves as an intermediate step
+      in the data transformation process, allowing for data cleaning and preparation before being used
+      in downstream models.
+    columns:
+      - name: id
+        data_type: int
+        description: >
+          The unique identifier for each record in the `customer_demographics` table. This field is typically
+          used as a primary key to ensure that each record can be uniquely identified.
+
+      - name: customer_description
+        data_type: string
+        description: >
+          A description of the customer demographic.

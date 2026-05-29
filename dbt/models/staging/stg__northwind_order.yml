@@ -1,0 +1,89 @@
+version: 2
+
+models:
+  - name: stg__northwind_order
+    description: >
+      Staging model for the orders. Registers informations about each order, including the customer,
+      employee, and shipping details.
+    columns:
+      - name: order_id
+        data_type: string
+        description: >
+          The unique identifier for each record in the `orders` table.
+
+      - name: customer_id
+        data_type: string
+        description: >
+          The identifier for the customer who placed the order. This field links the order
+          to a specific customer in the `customers` table.
+
+      - name: employee_id
+        data_type: int
+        description: >
+          The identifier for the employee who handled the order. This field links the order
+          to a specific employee in the `employees` table.
+
+      - name: order_date
+        data_type: date
+        description: >
+          The date when the order was placed. This field is used for tracking the order's timeline
+          and for reporting purposes.
+
+      - name: required_date
+        data_type: date
+        description: >
+          The date by which the order is required to be delivered. This field is used for tracking
+          the order's timeline and for reporting purposes.
+
+      - name: shipped_date
+        data_type: date
+        description: >
+          The date when the order was shipped. This field is used for tracking the order's timeline
+          and for reporting purposes.
+
+      - name: ship_via_id
+        data_type: int
+        description: >
+          The identifier for the shipping method used for the order. This field links the order
+          to a specific shipping method in the `shippers` table.
+
+      - name: freight
+        data_type: decimal(10,2)
+        description: >
+          The freight cost for the order. This field is used for calculating the total cost of the order
+          and for reporting purposes.
+
+      - name: ship_name
+        data_type: string
+        description: >
+          The name of the person or company to whom the order will be shipped.
+
+      - name: ship_address
+        data_type: string
+        description: >
+          The address where the order will be shipped. This field is used for communication and delivery
+          purposes.
+
+      - name: ship_city
+        data_type: string
+        description: >
+          The city where the order will be shipped. This field is used for communication and delivery
+          purposes.
+
+      - name: ship_region
+        data_type: string
+        description: >
+          The region where the order will be shipped. This field is used for communication and delivery
+          purposes.
+
+      - name: ship_postal_code
+        data_type: string
+        description: >
+          The postal code of the shipping address. This field is used for communication and delivery
+          purposes.
+
+      - name: ship_country
+        data_type: string
+        description: >
+          The country where the order will be shipped. This field is used for communication and delivery
+          purposes.
