@@ -7,7 +7,7 @@ models:
       employee, and shipping details.
     columns:
       - name: order_id
-        data_type: string
+        data_type: int
         description: >
           The unique identifier for each record in the `orders` table.
 
