@@ -12,8 +12,8 @@ with
             , cast(firstname as string) as first_name
             , cast(title as string) as title
             , cast(titleofcourtesy as string) as title_of_courtesy
-            , cast(birthdate as date) as birth_date      --- testar formato "date"
-            , cast(hiredate as date) as hire_date        --- testar formato "date"
+            , cast(birthdate as date) as birth_date
+            , cast(hiredate as date) as hire_date
             , cast(address as string) as address
             , cast(city as string) as city
             , cast(region as string) as region

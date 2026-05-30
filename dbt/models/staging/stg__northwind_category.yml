@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg__northwind_category
+    description: >
+      Staging model for the `categories`. Registers the  category products and their descriptions.
+    columns:
+      - name: category_id
+        data_type: int
+        data_tests:
+          - unique
+          - not_null
+        description: >
+          The unique identifier for each category in the `categories` table.
+
+      - name: category_name
+        data_type: string
+        description: >
+          The name of the category.
+
+      - name: category_description
+        data_type: string
+        description: >
+          A description of the category.

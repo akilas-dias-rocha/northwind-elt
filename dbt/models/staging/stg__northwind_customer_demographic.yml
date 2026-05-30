@@ -9,9 +9,11 @@ models:
     columns:
       - name: id
         data_type: int
+        data_tests:
+          - unique
+          - not_null
         description: >
-          The unique identifier for each record in the `customer_demographics` table. This field is typically
-          used as a primary key to ensure that each record can be uniquely identified.
+          The unique identifier for each record in the `customer_demographics` table.
 
       - name: customer_description
         data_type: string
