@@ -8,16 +8,26 @@ models:
     columns:
       - name: territory_id
         data_type: string
+        data_tests:
+          - unique
+          - not_null
         description: >
           The unique identifier for each record in the `territories` table.
 
       - name: territory_description
         data_type: string
+        data_tests:
+          - not_null
         description: >
           A description of the territory.
 
       - name: region_id
         data_type: int
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg__northwind_region')
+              field: region_id
         description: >
           The identifier for the region to which the territory belongs. This field links the territory
           to a specific region in the `regions` table.

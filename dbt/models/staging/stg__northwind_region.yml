@@ -9,11 +9,16 @@ models:
     columns:
       - name: region_id
         data_type: int
+        data_tests:
+          - unique
+          - not_null
         description: >
           The unique identifier for each record in the `regions` table.''
 
       - name: region_description
         data_type: string
+        data_tests:
+          - not_null
         description: >
           The description of the region. This field is used to provide a human-readable
           name for the region and is often used in reporting and analysis.

@@ -8,11 +8,16 @@ models:
     columns:
       - name: shipper_id
         data_type: int
+        data_tests:
+          - unique
+          - not_null
         description: >
           The unique identifier for each record in the `shippers` table.''
 
       - name: company_name
         data_type: string
+        data_tests:
+          - not_null
         description: >
           The name of the shipping company. This field is used to identify and communicate with the shipper.
 

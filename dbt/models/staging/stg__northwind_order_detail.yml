@@ -9,18 +9,31 @@ models:
     columns:
       - name: order_detail_id
         data_type: string
+        data_tests:
+          - unique
+          - not_null
         description: >
           The unique identifier for each record in the `order_details` table. This field is used
           to uniquely identify each order detail and is often used as a primary key in the staging model.
 
       - name: order_id
         data_type: int
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg__northwind_order')
+              field: order_id
         description: >
           The identifier for the order to which the detail belongs. This field is used to link the order
           detail to its corresponding order.
 
       - name: product_id
         data_type: int
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg__northwind_products')
+              field: product_id
         description: >
           The identifier for the product associated with the order detail. This field is used to link the order
           detail to its corresponding product.

@@ -8,17 +8,30 @@ models:
     columns:
       - name: order_id
         data_type: int
+        data_tests:
+          - unique
+          - not_null
         description: >
           The unique identifier for each record in the `orders` table.
 
       - name: customer_id
         data_type: string
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg__northwind_customers')
+              field: customer_id
         description: >
           The identifier for the customer who placed the order. This field links the order
           to a specific customer in the `customers` table.
 
       - name: employee_id
         data_type: int
+        data_tests:
+          - not_null
+          - relationships:
+              to: ref('stg__northwind_employees')
+              field: employee_id
         description: >
           The identifier for the employee who handled the order. This field links the order
           to a specific employee in the `employees` table.

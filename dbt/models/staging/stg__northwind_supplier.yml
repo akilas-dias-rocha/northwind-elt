@@ -8,11 +8,16 @@ models:
     columns:
       - name: supplier_id
         data_type: int
+        data_tests:
+          - unique
+          - not_null
         description: >
           The unique identifier for each record in the `suppliers` table.'
 
       - name: company_name
         data_type: string
+        data_tests:
+          - not_null
         description: >
           The name of the supplier company. This field is used to identify and communicate with the supplier.
 

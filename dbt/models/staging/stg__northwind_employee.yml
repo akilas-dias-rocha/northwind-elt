@@ -9,6 +9,9 @@ models:
     columns:
       - name: employee_id
         data_type: int
+        data_tests:
+          - unique
+          - not_null
         description: >
           The unique identifier for each record in the `employees` table.
 
