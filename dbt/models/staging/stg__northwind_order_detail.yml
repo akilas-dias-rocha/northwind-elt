@@ -40,15 +40,21 @@ models:
 
       - name: unit_price
         data_type: decimal(10,2)
+        data_tests:
+          - not_null
         description: >
           The price of the product per unit. This field is used to calculate the total cost of the order detail.
 
       - name: quantity
         data_type: int
+        data_tests:
+          - not_null
         description: >
           The number of units of the product ordered. This field is used to calculate the total cost of the order detail.
 
       - name: discount
         data_type: decimal(10,2)
+        data_tests:
+          - not_null
         description: >
           The discount applied to the order detail. This field is used to calculate the discounted cost of the order detail.

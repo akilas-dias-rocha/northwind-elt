@@ -1,0 +1,75 @@
+version: 2
+
+models:
+  - name: int__order_detail
+    description: >
+      This model represents the order details, including information about the products ordered,
+      their prices, quantities, and any discounts applied. It serves as an intermediate table for
+      analyzing sales performance and customer purchasing behavior.
+    columns:
+      - name: order_detail_id
+        data_type: string
+        data_tests:
+          - unique
+          - not_null
+        description: >
+          The unique identifier for each line item within an order. Acts as the primary key.
+
+      - name: order_id
+        data_type: int
+        data_tests:
+          - not_null
+        description: >
+          The unique identifier of the sales order. Foreign key linking to the orders table.
+
+      - name: product_id
+        data_type: int
+        data_tests:
+          - not_null
+        description: >
+          The unique identifier of the product ordered. Foreign key linking to the products table.
+
+      - name: unit_price
+        data_type: decimal(10,2)
+        data_tests:
+          - not_null
+        description: >
+          The price charged per unit of the product at the time of purchase.
+
+      - name: quantity
+        data_type: int
+        data_tests:
+          - not_null
+        description: >
+          The number of units of the product purchased in this line item.
+
+      - name: discount
+        data_type: decimal(10,2)
+        data_tests:
+          - not_null
+        description: >
+          The discount percentage applied to the unit price (e.g., 0.15 for 15%).
+
+      - name: gross_amount
+        data_type: decimal(10,2)
+        data_tests:
+          - not_null
+        description: >
+          The total value of the line item before any discounts are applied. Calculated as
+          quantity multiplied by unit_price.
+
+      - name: discount_amount
+        data_type: decimal(12,2)
+        data_tests:
+          - not_null
+        description: >
+          The monetary value of the discount applied to this line item. Calculated as
+          gross_amount multiplied by discount.
+
+      - name: net_amount
+        data_type: decimal(10,2)
+        data_tests:
+          - not_null
+        description: >
+          The final total value of the line item after discounts have been deducted. Calculated
+          as gross_amount minus discount_amount.
