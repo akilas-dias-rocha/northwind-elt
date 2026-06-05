@@ -62,6 +62,10 @@ models:
 
       - name: freight
         data_type: decimal(10,2)
+        data_tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
         description: >
           The freight cost for the order. This field is used for calculating the total cost of the order
           and for reporting purposes.

@@ -42,6 +42,8 @@ models:
         data_type: decimal(10,2)
         data_tests:
           - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
         description: >
           The price of the product per unit. This field is used to calculate the total cost of the order detail.
 
@@ -49,6 +51,8 @@ models:
         data_type: int
         data_tests:
           - not_null
+          - dbt_utils.expression_is_true:
+              expression: "> 0"
         description: >
           The number of units of the product ordered. This field is used to calculate the total cost of the order detail.
 
@@ -56,5 +60,9 @@ models:
         data_type: decimal(10,2)
         data_tests:
           - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1
+              strictly: false
         description: >
           The discount applied to the order detail. This field is used to calculate the discounted cost of the order detail.

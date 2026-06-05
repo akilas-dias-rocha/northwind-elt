@@ -52,29 +52,47 @@ models:
 
       - name: unit_price
         data_type: decimal(10,2)
+        data_tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
         description: >
           The price of each unit of the product. This field is used for pricing and reporting purposes.
 
       - name: units_in_stock
         data_type: int
+        data_tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
         description: >
           The number of units of the product currently in stock. This field is used for inventory management
           and reporting purposes.
 
       - name: units_on_order
         data_type: int
+        data_tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
         description: >
           The number of units of the product currently on order. This field is used for inventory management
           and reporting purposes.
 
       - name: reorder_level
         data_type: int
+        data_tests:
+          - not_null
+          - dbt_utils.expression_is_true:
+              expression: ">= 0"
         description: >
           The reorder level for the product. This field is used for inventory management
           and reporting purposes.
 
       - name: is_discontinued
         data_type: boolean
+        data_tests:
+          - not_null
         description: >
           A flag indicating whether the product is discontinued. This field is used for inventory management
           and reporting purposes.
