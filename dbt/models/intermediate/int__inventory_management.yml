@@ -1,0 +1,73 @@
+version: 2
+
+models:
+  - name: int__inventory_management
+    description: >
+      Intermediate model that monitors and categorizes current product inventory levels based on standard business rules. 
+      It combines staging product data with a dynamic stock status ('Out of Stock', 'Reorder', 'In Stock') 
+      to assist the purchasing and operations teams with replenishment decisions.
+    columns:
+      - name: product_id
+        data_type: string
+        description: >
+          The unique identifier for each record in the `products` table.
+
+      - name: category_id
+        data_type: int
+        description: >
+          The identifier for the category of the product. This field links the product
+          to a specific category in the `categories` table.
+
+      - name: supplier_id
+        data_type: int
+        description: >
+          The identifier for the supplier of the product. This field links the product
+          to a specific supplier in the `suppliers` table.
+
+      - name: unit_price
+        data_type: decimal(10,2)
+        description: >
+          The price of each unit of the product. This field is used for pricing and reporting purposes.
+
+      - name: quantity_per_unit
+        data_type: string
+        description: >
+          The quantity of the product per unit. This field is used for inventory management
+          and reporting purposes.
+
+      - name: units_in_stock
+        data_type: int
+        description: >
+          The number of units of the product currently in stock. This field is used for inventory management
+          and reporting purposes.
+
+      - name: units_on_order
+        data_type: int
+        description: >
+          The number of units of the product currently on order. This field is used for inventory management
+          and reporting purposes.
+
+      - name: reorder_level
+        data_type: int
+        description: >
+          The reorder level for the product. This field is used for inventory management
+          and reporting purposes.
+
+      - name: is_discontinued
+        data_type: boolean
+        description: >
+          A flag indicating whether the product is discontinued. This field is used for inventory management
+          and reporting purposes.
+      
+      - name: inventory_status
+        data_type: string
+        data_tests:
+          - not_null
+          - accepted_values:
+              values: ['In Stock', 'Reorder', 'Out of Stock']
+        description: >
+          Indicates the inventory status of the product based on the `units_in_stock` and `reorder_level` fields.
+          Business logic defined status of the product stock level:
+          - 'Out of Stock': When units_in_stock is 0.
+          - 'Reorder': When the product stock falls below or equals the reorder level.
+          - 'In Stock': When the product stock is above the reorder level.
