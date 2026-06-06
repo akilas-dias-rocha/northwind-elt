@@ -1,0 +1,87 @@
+version: 2
+
+models:
+  - name: dim__employee
+    description: >
+      Dimension model containing detailed profiles of all company employees. 
+      Includes personal details, HR dates, contact information, and organizational hierarchy 
+      via a self-referencing relationship (reports_to).
+    columns:
+      - name: employee_id
+        description: >
+          The unique primary key for each employee.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: last_name
+        description: >
+          The employee's last name.
+        data_tests:
+          - not_null
+
+      - name: first_name
+        description: >
+          The employee's first name.
+        data_tests:
+          - not_null
+
+      - name: title
+        description: >
+          The professional job title of the employee.
+
+      - name: title_of_courtesy
+        description: >
+          Title used for formal address (e.g., Mr., Ms., Dr.).
+
+      - name: birth_date
+        description: >
+          The employee's date of birth.
+
+      - name: hire_date
+        description: >
+          The official date the employee was hired by the company.
+
+      - name: address
+        description: >
+          The street address of the employee's residence.
+
+      - name: city
+        description: >
+          The city where the employee resides.
+
+      - name: region
+        description: >
+          The state, province, or region of the employee's address.
+
+      - name: postal_code
+        description: >
+          The postal or ZIP code of the employee's residence.
+
+      - name: country
+        description: >
+          The country where the employee lives.
+
+      - name: home_phone
+        description: >
+          The primary landline or home phone number of the employee.
+
+      - name: extension
+        description: >
+          The internal office phone extension number for the employee.
+
+      - name: photo
+        description: >
+          Binary data or reference to the employee's image/avatar.
+
+      - name: notes
+        description: >
+          General HR notes, background information, or educational profile regarding the employee.
+
+      - name: reports_to
+        description: >
+          Foreign key referencing the `employee_id` of this employee's direct manager.
+
+      - name: photo_path
+        description: >
+          File path or URL linking to the employee's photograph.
