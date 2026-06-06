@@ -7,7 +7,6 @@ models:
       unique identifier, company name, and contact details.
     columns:
       - name: shipper_id
-        data_type: int
         data_tests:
           - unique
           - not_null
