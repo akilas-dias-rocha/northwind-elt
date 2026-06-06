@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: dim__shipper
+    description: >
+      Dimension model for shippers. It provides a structured representation of the shippers, including their
+      unique identifier, company name, and contact details.
+    columns:
+      - name: shipper_id
+        data_type: int
+        data_tests:
+          - unique
+          - not_null
+        description: >
+          The unique identifier for each record in the `shippers` table.''
+
+      - name: company_name
+        data_type: string
+        data_tests:
+          - not_null
+        description: >
+          The name of the shipping company. This field is used to identify and communicate with the shipper.
+
+      - name: phone
+        data_type: string
+        description: >
+          The phone number of the shipper. This field is used for communication purposes.
