@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: dim__supplier
+    description: >
+      Dimension model for suppliers. It provides a structured representation of the suppliers, including their
+      unique identifier, company name, and contact details.
+    columns:
+      - name: supplier_id
+        data_type: int
+        data_tests:
+          - unique
+          - not_null
+        description: >
+          The unique identifier for each record in the `suppliers` table.'
+
+      - name: company_name
+        data_type: string
+        data_tests:
+          - not_null
+        description: >
+          The name of the supplier company. This field is used to identify and communicate with the supplier.
+
+      - name: contact_name
+        data_type: string
+        description: >
+          The name of the primary contact at the supplier company.
+
+      - name: contact_title
+        data_type: string
+        description: >
+          The title of the primary contact at the supplier company.
+
+      - name: address
+        data_type: string
+        description: >
+          The address of the supplier company.
+
+      - name: city
+        data_type: string
+        description: >
+          The city where the supplier company is located.
+
+      - name: region
+        data_type: string
+        description: >
+          The region where the supplier company is located.
+
+      - name: postal_code
+        data_type: string
+        description: >
+          The postal code of the supplier company.
+
+      - name: country
+        data_type: string
+        description: >
+          The country where the supplier company is located.
+
+      - name: phone
+        data_type: string
+        description: >
+          The phone number of the supplier company.
+
+      - name: fax
+        data_type: string
+        description: >
+          The fax number of the supplier company.
+
+      - name: homepage
+        data_type: string
+        description: >
+          The homepage URL of the supplier company.
