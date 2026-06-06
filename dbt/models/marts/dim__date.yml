@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: dim__date
+    description: >
+      Time dimension (date spine) model that generates a continuous sequence of dates starting from 2012-01-01 
+      up to January 1st of two years into the future from the current date. It includes pre-calculated calendar 
+      attributes to simplify time-based reporting and aggregations.
+    columns:
+      - name: date_day
+        description: >
+          The primary key for the date dimension, formatted as a standard DATE type.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: day_of_week
+        description: >
+          Numeric representation of the day of the week (1 for Sunday through 7 for Saturday).
+
+      - name: month
+        description: >
+          The numeric value of the month (1 to 12).
+
+      - name: year
+        description: >
+          The four-digit calendar year.
+
+      - name: quarter
+        description: >
+          The numeric value of the calendar quarter (1 to 4).
+
+      - name: day_of_year
+        description: >
+          The day number within the year (1 to 365, or 366 for leap years).
+
+      - name: month_name
+        description: >
+          The short English three-letter abbreviation of the month name (e.g., 'Jan', 'Feb').
+
+      - name: day_month
+        description: >
+          The date formatted as 'DD-MM' (e.g., '25-12' for Christmas Day).
+
+      - name: week_day_name
+        description: >
+          The full English text name of the day of the week (e.g., 'Monday', 'Sunday').
+
+      - name: quarter_name
+        description: >
+          The calendar quarter represented as a string prefixed with 'Q' (e.g., 'Q1', 'Q2').

@@ -10,14 +10,14 @@ with
 
     , days_info as (
         select 
-            cast(date_day as date)                  as date_day
-            , extract(dayofweek from date_day)      as day_of_week
-            , extract(month from date_day)          as month
-            , extract(year from date_day)           as year
-            , extract(quarter from date_day)        as quarter
+            cast(date_day as date) as date_day
+            , extract(dayofweek from date_day) as day_of_week
+            , extract(month from date_day) as month
+            , extract(year from date_day) as year
+            , extract(quarter from date_day) as quarter
             , dayofyear(date_day) as day_of_year
-            , date_format(date_day, 'MMM')         as month_name
-            , date_format(date_day, 'dd-MM')        as day_month
+            , date_format(date_day, 'MMM') as month_name
+            , date_format(date_day, 'dd-MM') as day_month
         from date_spine_raw
     )
 
