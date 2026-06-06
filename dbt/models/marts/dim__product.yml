@@ -1,0 +1,51 @@
+version: 2
+
+models:
+  - name: dim__product
+    description: >
+      Dimensional model representing the product dimension. The grain is at the product level.
+    columns:
+      - name: product_id
+        data_tests:
+          - unique
+          - not_null
+        description: >
+          The primary key of the product.
+        
+      - name: category_fk
+        data_tests:
+          - not_null
+        description: >
+          Foreign key linking to the product category.
+
+      - name: supplier_fk
+        data_tests:
+          - not_null
+        description: >
+          Foreign key linking to the supplier of the product.
+
+      - name: product_name
+        data_tests:
+          - not_null
+        description: >
+          The commercial name of the product.
+
+      - name: category_name
+        description: >
+          The name of the product category.
+
+      - name: category_description
+        description: >
+          A brief explanation of what the category encompasses.
+
+      - name: quantity_per_unit
+        description: >
+          Detailed packaging information.
+
+      - name: unit_price
+        description: >
+          The price per unit of the product.
+
+      - name: is_discontinued
+        description: >
+          Boolean flag indicating whether the product is active (false) or no longer being replenished (true).
