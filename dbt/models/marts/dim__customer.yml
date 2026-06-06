@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: dim__customer
+    description: >
+      Dimension model containing detailed profile information for all customers, 
+      including corporate names, primary contacts, and complete geographic/address data.
+    columns:
+      - name: customer_id
+        description: >
+          The unique primary key for each customer.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: company_name
+        description: >
+          The official registered name of the customer's company.
+        data_tests:
+          - not_null
+
+      - name: contact_name
+        description: >
+          The full name of the primary contact person at the company.
+
+      - name: contact_title
+        description: >
+          The job title or role of the primary contact person.
+
+      - name: address
+        description: >
+          The street name and number of the customer's location.
+
+      - name: city
+        description: >
+          The city where the customer is located.
+
+      - name: region
+        description: >
+          The state, province, or region of the customer.
+
+      - name: postal_code
+        description: >
+          The postal or ZIP code of the address.
+
+      - name: country
+        description: >
+          The country where the customer company is based.
+
+      - name: phone
+        description: >
+          The main contact telephone number for the customer.
+
+      - name: fax
+        description: >
+          The fax number for the customer.
