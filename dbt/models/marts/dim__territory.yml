@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: dim__territory
+    description: >
+      Dimension model that maps territories to their respective regions. 
+      This is used to analyze sales performance and logistics based on geographic distribution.
+    columns:
+      - name: territory_id
+        description: >
+          The primary key for the territory.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: region_id
+        description: >
+          Foreign key linking the territory to its broader geographical region.
+        data_tests:
+          - not_null
+
+      - name: territory_description
+        description: >
+          The text name or description of the specific territory.
+        data_tests:
+          - not_null
+
+      - name: region_description
+        description: >
+          The text name of the overarching region.
+        data_tests:
+          - not_null
