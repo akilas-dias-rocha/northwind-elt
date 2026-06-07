@@ -1,0 +1,115 @@
+version: 2
+
+models:
+  - name: fct__order
+    description: >
+      Fact model at the order line-item level (granularity matching order_details). 
+      It consolidates general order headers with line-item details and includes proportional 
+      freight allocation (`allocated_freight`) based on each item's net amount weight within the order.
+    columns:
+      - name: order_detail_id
+        description: >
+          The primary key of the fact table, identifying each specific line item in an order.
+        data_tests:
+          - unique
+          - not_null
+
+      - name: order_id
+        description: >
+          The foreign key identifying the overarching sales order.
+        data_tests:
+          - not_null
+
+      - name: product_id
+        description: >
+          Foreign key linking to the specific product sold in this line item.
+        data_tests:
+          - not_null
+
+      - name: customer_fk
+        description: >
+          Foreign key linking to the customer who placed the order.
+        data_tests:
+          - not_null
+
+      - name: employee_fk
+        description: >
+          Foreign key linking to the employee/sales representative who processed the order.
+        data_tests:
+          - not_null
+
+      - name: ship_via_fk
+        description: >
+          Foreign key linking to the shipper/carrier used to deliver the order.
+
+      - name: order_date
+        description: >
+          The date when the order was originally placed.
+        data_tests:
+          - not_null
+
+      - name: required_date
+        description: >
+          The deadline date by which the customer requested to receive the order.
+
+      - name: shipped_date
+        description: >
+          The actual date when the order was shipped out from the warehouse.
+
+      # Quantities and Monetary Fields
+      - name: unit_price
+        description: >
+          The price per single unit of the product charged for this order.
+
+      - name: quantity
+        description: >
+          The total number of units purchased for this specific line item.
+
+      - name: discount
+        description: >
+          The percentage discount applied to the line item (expressed as a decimal, e.g., 0.15 for 15%).
+
+      - name: discount_amount
+        description: >
+          The total monetary value subtracted from the gross amount due to the discount. Formula: gross_amount * discount.
+
+      - name: gross_amount
+        description: >
+          The total value of the line item before discounts. Formula: unit_price * quantity.
+
+      - name: net_amount
+        description: >
+          The final value charged for the line item after applying discounts. Formula: gross_amount - discount_amount.
+
+      - name: total_order_freight
+        description: >
+          The total cost of freight charged for the entire order header (not item-specific).
+
+      - name: allocated_freight
+        description: >
+          The prorated portion of the total order freight allocated to this specific line item. 
+          Calculated proportionally based on this item's `net_amount` weight over the total order's net amount.
+
+      - name: ship_name
+        description: >
+          The name of the person or company to whom the order is being shipped.
+
+      - name: ship_address
+        description: >
+          The destination delivery street address.
+
+      - name: ship_city
+        description: >
+          The destination delivery city.
+
+      - name: ship_region
+        description: >
+          The destination delivery state, province, or region.
+
+      - name: ship_postal_code
+        description: >
+          The destination delivery postal or ZIP code.
+
+      - name: ship_country
+        description: >
+          The destination delivery country.
