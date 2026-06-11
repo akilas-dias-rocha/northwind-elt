@@ -34,7 +34,7 @@ models:
         description: >
           The day number within the year (1 to 365, or 366 for leap years).
 
-      - name: month_name
+      - name: month_short_name
         description: >
           The short English three-letter abbreviation of the month name (e.g., 'Jan', 'Feb').
 
@@ -45,6 +45,10 @@ models:
       - name: week_day_name
         description: >
           The full English text name of the day of the week (e.g., 'Monday', 'Sunday').
+
+      - name: month_name
+        description: >
+          The full English text name of the month (e.g., 'January', 'February').
 
       - name: quarter_name
         description: >
