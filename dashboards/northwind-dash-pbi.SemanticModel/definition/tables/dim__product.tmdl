@@ -1,0 +1,91 @@
+table dim__product
+	lineageTag: 728276d4-880b-4e3a-8dff-e2e19fc14ebf
+
+	column product_id
+		dataType: string
+		lineageTag: dae1b6bc-687e-4917-916b-32845c6cfe54
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_fk
+		dataType: int64
+		formatString: 0
+		lineageTag: 4baf8298-36f8-43fe-a4ad-4e9aefe1d687
+		summarizeBy: sum
+		sourceColumn: category_fk
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_name
+		dataType: string
+		lineageTag: bd4c5e81-dea8-4cc6-bf64-197331dc08d9
+		summarizeBy: none
+		sourceColumn: product_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_name
+		dataType: string
+		lineageTag: e2910171-dfdb-4131-b9d2-b58140a6ce19
+		summarizeBy: none
+		sourceColumn: category_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column category_description
+		dataType: string
+		lineageTag: 3489be77-3a0a-47d4-8b25-af9b05ab800c
+		summarizeBy: none
+		sourceColumn: category_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column supplier_fk
+		dataType: int64
+		formatString: 0
+		lineageTag: dcb2b7ee-5c3a-43ce-bb62-a743a970a8cb
+		summarizeBy: none
+		sourceColumn: supplier_fk
+
+		annotation SummarizationSetBy = Automatic
+
+	column quantity_per_unit
+		dataType: string
+		lineageTag: d659e99b-4c0c-44c5-bbfc-8f1b43f71053
+		summarizeBy: none
+		sourceColumn: quantity_per_unit
+
+		annotation SummarizationSetBy = Automatic
+
+	column unit_price
+		dataType: double
+		lineageTag: df93bbe8-1765-449b-b5dc-63897ed9b686
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column is_discontinued
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 8aa4c9c8-b331-40e0-b067-b9a216525999
+		summarizeBy: none
+		sourceColumn: is_discontinued
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim__product = m
+		mode: import
+		source =
+				let
+				    Fonte = DatabricksMultiCloud.Catalogs("dbc-fc025aa0-f748.cloud.databricks.com", "sql/1.0/warehouses/a63e50ac4fe4ee88", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    northwind_dev_Database = Fonte{[Name="northwind_dev",Kind="Database"]}[Data],
+				    dev_akilas_rocha_marts_Schema = northwind_dev_Database{[Name="dev_akilas_rocha_marts",Kind="Schema"]}[Data],
+				    dim__product_Table = dev_akilas_rocha_marts_Schema{[Name="dim__product",Kind="Table"]}[Data]
+				in
+				    dim__product_Table
+

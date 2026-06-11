@@ -1,0 +1,102 @@
+table dim__customer
+	lineageTag: 23b72a86-847a-45bf-a7fd-71444eb24026
+
+	column customer_id
+		dataType: string
+		lineageTag: 196b63cc-98c9-44cf-8f9c-8359c70e4ee5
+		summarizeBy: none
+		sourceColumn: customer_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: c6be4280-a6cd-4a41-ab04-126dad96e5ef
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_name
+		dataType: string
+		lineageTag: ab77c537-d837-4fc8-8c42-a5c7505d9def
+		summarizeBy: none
+		sourceColumn: contact_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_title
+		dataType: string
+		lineageTag: 47501225-28b5-434d-9969-1b40d49e7839
+		summarizeBy: none
+		sourceColumn: contact_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column address
+		dataType: string
+		lineageTag: 03be910f-5a24-4045-89b5-53dc0c2aa633
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 71b8b08d-db29-4ca4-9e0e-10896edcfa65
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: fe1bc564-ce24-4f4d-902d-40489f5b035d
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column postal_code
+		dataType: string
+		lineageTag: 2b56bb6a-8e45-4331-972b-a9f6a8a6107d
+		summarizeBy: none
+		sourceColumn: postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: 9f9fedd5-18dc-41e2-868a-9b99c85ae0f6
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: string
+		lineageTag: 3a0c4ce2-11a6-433f-88a7-e1f157ba844a
+		summarizeBy: none
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column fax
+		dataType: string
+		lineageTag: 415be7a2-d2c5-41a3-b01e-09e1ca378918
+		summarizeBy: none
+		sourceColumn: fax
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim__customer = m
+		mode: import
+		source =
+				let
+				    Fonte = DatabricksMultiCloud.Catalogs("dbc-fc025aa0-f748.cloud.databricks.com", "sql/1.0/warehouses/a63e50ac4fe4ee88", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    northwind_dev_Database = Fonte{[Name="northwind_dev",Kind="Database"]}[Data],
+				    dev_akilas_rocha_marts_Schema = northwind_dev_Database{[Name="dev_akilas_rocha_marts",Kind="Schema"]}[Data],
+				    dim__customer_Table = dev_akilas_rocha_marts_Schema{[Name="dim__customer",Kind="Table"]}[Data]
+				in
+				    dim__customer_Table
+

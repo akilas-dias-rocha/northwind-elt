@@ -1,0 +1,241 @@
+table fct__order
+	lineageTag: 012f528f-9608-4e9f-ad70-693c1203aa17
+
+	column order_detail_id
+		dataType: string
+		lineageTag: 6e929786-ffb9-425d-8623-06a372859ee0
+		summarizeBy: none
+		sourceColumn: order_detail_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2f3d1f85-043f-4449-a22d-5dd956b0ed8f
+		summarizeBy: sum
+		sourceColumn: order_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column product_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 7038a3c7-9f3e-42bc-b2ec-cbd655343b2e
+		summarizeBy: none
+		sourceColumn: product_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column customer_fk
+		dataType: string
+		lineageTag: 98fd6e77-1eb0-445c-94e4-9a9baf8dfcb4
+		summarizeBy: none
+		sourceColumn: customer_fk
+
+		annotation SummarizationSetBy = Automatic
+
+	column employee_fk
+		dataType: int64
+		formatString: 0
+		lineageTag: 37a728ed-7e2e-4959-86a6-656de5f855bd
+		summarizeBy: none
+		sourceColumn: employee_fk
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_via_fk
+		dataType: int64
+		formatString: 0
+		lineageTag: 32eec2b2-cc73-45e3-9b4d-fd3541749ff2
+		summarizeBy: none
+		sourceColumn: ship_via_fk
+
+		annotation SummarizationSetBy = Automatic
+
+	column order_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 449c00ff-84e3-4c71-914d-6d60164fe22c
+		summarizeBy: none
+		sourceColumn: order_date
+
+		variation Variation
+			isDefault
+			relationship: 162e543f-58dd-46f0-ab82-52163154344b
+			defaultHierarchy: LocalDateTable_7984cf0d-944c-4d26-b5a8-53165b525906.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column required_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: ee240737-24f4-4a5a-9f4a-78f30bcf2ce6
+		summarizeBy: none
+		sourceColumn: required_date
+
+		variation Variation
+			isDefault
+			relationship: 2cc7e4db-6ae3-4fab-935f-1b119666e880
+			defaultHierarchy: LocalDateTable_18c6802d-9f3b-4fa6-864f-b4db66910505.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column shipped_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: b4906c31-27cb-4fc6-a938-12b11fb5f654
+		summarizeBy: none
+		sourceColumn: shipped_date
+
+		variation Variation
+			isDefault
+			relationship: 440a250d-c55f-44da-9ffa-15c326e9c5ef
+			defaultHierarchy: LocalDateTable_0fb2dd53-3ef5-41ec-9236-deed513038b0.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column unit_price
+		dataType: double
+		lineageTag: 7d624e0b-590e-4cba-85b0-e0b7e48c044d
+		summarizeBy: sum
+		sourceColumn: unit_price
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column quantity
+		dataType: int64
+		formatString: 0
+		lineageTag: b15bb0ef-a4a0-4990-93c9-a1fd7f029869
+		summarizeBy: sum
+		sourceColumn: quantity
+
+		annotation SummarizationSetBy = Automatic
+
+	column discount
+		dataType: double
+		lineageTag: eb06aeb7-c955-4660-81a8-80cc9c2781fe
+		summarizeBy: sum
+		sourceColumn: discount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column discount_amount
+		dataType: double
+		lineageTag: 710f9c35-fa7e-474c-8399-79ec16344e0f
+		summarizeBy: sum
+		sourceColumn: discount_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column gross_amount
+		dataType: double
+		lineageTag: 8194cc1a-9e20-4f15-bef3-112bf40b35a0
+		summarizeBy: sum
+		sourceColumn: gross_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column net_amount
+		dataType: double
+		lineageTag: d714f5b7-d089-4608-984d-4a8c6d07a3c3
+		summarizeBy: sum
+		sourceColumn: net_amount
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column total_order_freight
+		dataType: double
+		lineageTag: fa91ea14-238e-448c-8cdc-0283d5c12d59
+		summarizeBy: sum
+		sourceColumn: total_order_freight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column allocated_freight
+		dataType: double
+		lineageTag: 1d22b6c2-8ede-43d8-92d1-e349a8d29fba
+		summarizeBy: sum
+		sourceColumn: allocated_freight
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column ship_name
+		dataType: string
+		lineageTag: 9ba92be5-f79b-437a-8809-c343d47c883a
+		summarizeBy: none
+		sourceColumn: ship_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_address
+		dataType: string
+		lineageTag: 81e12721-cd20-4dce-8d7a-bb16b793f7a2
+		summarizeBy: none
+		sourceColumn: ship_address
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_city
+		dataType: string
+		lineageTag: 49626c1a-615b-4d97-98f8-7c26eb8f0c60
+		summarizeBy: none
+		sourceColumn: ship_city
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_region
+		dataType: string
+		lineageTag: 3ceff004-26ac-48f0-a442-f78752310f52
+		summarizeBy: none
+		sourceColumn: ship_region
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_postal_code
+		dataType: string
+		lineageTag: 97fe6e5d-97c0-4c6e-a1e3-9794ec9ddfc5
+		summarizeBy: none
+		sourceColumn: ship_postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column ship_country
+		dataType: string
+		lineageTag: 1f9ec6e4-6dfe-4c1d-9647-df13d24af59c
+		summarizeBy: none
+		sourceColumn: ship_country
+
+		annotation SummarizationSetBy = Automatic
+
+	partition fct__order = m
+		mode: import
+		source =
+				let
+				    Fonte = DatabricksMultiCloud.Catalogs("dbc-fc025aa0-f748.cloud.databricks.com", "sql/1.0/warehouses/a63e50ac4fe4ee88", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    northwind_dev_Database = Fonte{[Name="northwind_dev",Kind="Database"]}[Data],
+				    dev_akilas_rocha_marts_Schema = northwind_dev_Database{[Name="dev_akilas_rocha_marts",Kind="Schema"]}[Data],
+				    fct__order_Table = dev_akilas_rocha_marts_Schema{[Name="fct__order",Kind="Table"]}[Data]
+				in
+				    fct__order_Table
+

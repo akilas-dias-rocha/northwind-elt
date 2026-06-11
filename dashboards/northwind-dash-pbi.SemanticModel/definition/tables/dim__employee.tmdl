@@ -1,0 +1,177 @@
+table dim__employee
+	lineageTag: 50041651-ed42-49fd-a7d3-e1d7f72174a1
+
+	column employee_id
+		dataType: int64
+		formatString: 0
+		lineageTag: be6856b7-5947-414a-a2cb-f3c974cf5fdf
+		summarizeBy: none
+		sourceColumn: employee_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column last_name
+		dataType: string
+		lineageTag: 693f58e5-fda8-4788-9a23-90b4a565d31b
+		summarizeBy: none
+		sourceColumn: last_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column first_name
+		dataType: string
+		lineageTag: 6b0d7d91-83ce-4955-9cb0-4bb336272d18
+		summarizeBy: none
+		sourceColumn: first_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column title
+		dataType: string
+		lineageTag: 6c19e31f-7de7-4fd1-8682-fde1b20d0020
+		summarizeBy: none
+		sourceColumn: title
+
+		annotation SummarizationSetBy = Automatic
+
+	column title_of_courtesy
+		dataType: string
+		lineageTag: 97182144-1626-4325-a87c-60c4622fbf78
+		summarizeBy: none
+		sourceColumn: title_of_courtesy
+
+		annotation SummarizationSetBy = Automatic
+
+	column birth_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: e23a35ca-6ffa-4d05-87bf-4481b8ef1fa6
+		summarizeBy: none
+		sourceColumn: birth_date
+
+		variation Variation
+			isDefault
+			relationship: 07274233-e187-437f-9fca-8786f24a71c6
+			defaultHierarchy: LocalDateTable_f969d416-e3d0-469c-8920-449224b3c99f.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column hire_date
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 0132c241-b376-45e7-9e29-864a23bbb780
+		summarizeBy: none
+		sourceColumn: hire_date
+
+		variation Variation
+			isDefault
+			relationship: b253a1ee-bd0b-4330-b6bc-2cb842227796
+			defaultHierarchy: LocalDateTable_4d0a1557-665f-4b80-8e3c-a59d8875cd3c.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column address
+		dataType: string
+		lineageTag: 38a0b022-e734-4fb5-a611-8791b1980009
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: d41c4d2f-0a3f-43a6-ae49-53fb8c378b1f
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 14d65cf6-17d2-4c00-987f-7e17a9826ea9
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column postal_code
+		dataType: string
+		lineageTag: e05993db-0bea-4486-b43d-99ab82177220
+		summarizeBy: none
+		sourceColumn: postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: df3d58c0-754f-418d-84fe-5c8fccb7f136
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column home_phone
+		dataType: string
+		lineageTag: 83bfe437-8be3-4090-9e6a-963acb0c1d4a
+		summarizeBy: none
+		sourceColumn: home_phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column extension
+		dataType: int64
+		formatString: 0
+		lineageTag: fc2b38b7-13f1-417c-86e3-cf082629d672
+		summarizeBy: sum
+		sourceColumn: extension
+
+		annotation SummarizationSetBy = Automatic
+
+	column photo
+		dataType: string
+		lineageTag: 62a2a568-4c40-46ab-b851-01a2c165f2b6
+		summarizeBy: none
+		sourceColumn: photo
+
+		annotation SummarizationSetBy = Automatic
+
+	column notes
+		dataType: string
+		lineageTag: 69c19dcc-8967-498c-ba35-3091b0b5f8e0
+		summarizeBy: none
+		sourceColumn: notes
+
+		annotation SummarizationSetBy = Automatic
+
+	column reports_to
+		dataType: int64
+		formatString: 0
+		lineageTag: 33270995-6ae8-4c73-a317-4172f43c852e
+		summarizeBy: sum
+		sourceColumn: reports_to
+
+		annotation SummarizationSetBy = Automatic
+
+	column photo_path
+		dataType: string
+		lineageTag: e631f4ba-f1ac-4f6f-812b-8b25b78412ce
+		summarizeBy: none
+		sourceColumn: photo_path
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim__employee = m
+		mode: import
+		source =
+				let
+				    Fonte = DatabricksMultiCloud.Catalogs("dbc-fc025aa0-f748.cloud.databricks.com", "sql/1.0/warehouses/a63e50ac4fe4ee88", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    northwind_dev_Database = Fonte{[Name="northwind_dev",Kind="Database"]}[Data],
+				    dev_akilas_rocha_marts_Schema = northwind_dev_Database{[Name="dev_akilas_rocha_marts",Kind="Schema"]}[Data],
+				    dim__employee_Table = dev_akilas_rocha_marts_Schema{[Name="dim__employee",Kind="Table"]}[Data]
+				in
+				    dim__employee_Table
+

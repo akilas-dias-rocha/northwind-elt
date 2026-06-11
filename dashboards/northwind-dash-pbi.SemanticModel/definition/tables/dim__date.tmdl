@@ -1,0 +1,107 @@
+table dim__date
+	lineageTag: 43446d6f-7b66-4bf1-bec0-4774f6002197
+
+	column date_day
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 34fa6112-1701-419a-b389-daf2b5978803
+		summarizeBy: none
+		sourceColumn: date_day
+
+		variation Variation
+			isDefault
+			relationship: 9a0a5649-facb-4f14-85ae-0394e7e45306
+			defaultHierarchy: LocalDateTable_7e9f8811-0df9-4c94-a3d1-ff714e255f64.'Hierarquia de datas'
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	column day_of_week
+		dataType: int64
+		formatString: 0
+		lineageTag: e1f45357-5551-45e7-917b-3b81e38f135e
+		summarizeBy: sum
+		sourceColumn: day_of_week
+
+		annotation SummarizationSetBy = Automatic
+
+	column month
+		dataType: int64
+		formatString: 0
+		lineageTag: d613c888-8f25-4280-bcbb-74cc44300501
+		summarizeBy: sum
+		sourceColumn: month
+
+		annotation SummarizationSetBy = Automatic
+
+	column year
+		dataType: int64
+		formatString: 0
+		lineageTag: 0b8c0f1c-63f3-418d-9b1b-7220ce8a02de
+		summarizeBy: sum
+		sourceColumn: year
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter
+		dataType: int64
+		formatString: 0
+		lineageTag: 8d7444eb-1c7e-4a13-9b0a-51abae62d8f6
+		summarizeBy: sum
+		sourceColumn: quarter
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_of_year
+		dataType: int64
+		formatString: 0
+		lineageTag: 1d61f6f2-fcc9-456d-b9d7-ced56e574790
+		summarizeBy: sum
+		sourceColumn: day_of_year
+
+		annotation SummarizationSetBy = Automatic
+
+	column month_name
+		dataType: string
+		lineageTag: 2126d6e6-7a1d-4e5c-b6a4-3232ad674f16
+		summarizeBy: none
+		sourceColumn: month_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column day_month
+		dataType: string
+		lineageTag: 74b9e01e-1f0d-4776-a947-b83b64ba87a8
+		summarizeBy: none
+		sourceColumn: day_month
+
+		annotation SummarizationSetBy = Automatic
+
+	column week_day_name
+		dataType: string
+		lineageTag: e3459fb9-f2da-430e-8bff-b3000ff44902
+		summarizeBy: none
+		sourceColumn: week_day_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column quarter_name
+		dataType: string
+		lineageTag: 3045aa9c-392f-406e-9470-bdfefd6ed242
+		summarizeBy: none
+		sourceColumn: quarter_name
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim__date = m
+		mode: import
+		source =
+				let
+				    Fonte = DatabricksMultiCloud.Catalogs("dbc-fc025aa0-f748.cloud.databricks.com", "sql/1.0/warehouses/a63e50ac4fe4ee88", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    northwind_dev_Database = Fonte{[Name="northwind_dev",Kind="Database"]}[Data],
+				    dev_akilas_rocha_marts_Schema = northwind_dev_Database{[Name="dev_akilas_rocha_marts",Kind="Schema"]}[Data],
+				    dim__date_Table = dev_akilas_rocha_marts_Schema{[Name="dim__date",Kind="Table"]}[Data]
+				in
+				    dim__date_Table
+

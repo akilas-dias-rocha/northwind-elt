@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "northwind-dash-pbi"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "aba08534-46a0-4c5b-b523-9731cd32dcdc"
+  }
+}

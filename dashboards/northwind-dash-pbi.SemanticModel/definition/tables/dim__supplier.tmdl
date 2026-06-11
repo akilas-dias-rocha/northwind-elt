@@ -1,0 +1,111 @@
+table dim__supplier
+	lineageTag: 758012e1-f91b-4ac6-9cdc-2ed36f0a5f82
+
+	column supplier_id
+		dataType: int64
+		formatString: 0
+		lineageTag: d7a8d87c-9c81-4560-b9ba-29e1633bf581
+		summarizeBy: none
+		sourceColumn: supplier_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: f86d2762-e9ea-4605-84ab-ea7942add2b8
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_name
+		dataType: string
+		lineageTag: 9884edde-c217-4fcd-9130-8be88fe36256
+		summarizeBy: none
+		sourceColumn: contact_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column contact_title
+		dataType: string
+		lineageTag: 07acdb91-3980-4b86-b449-d1c108802e54
+		summarizeBy: none
+		sourceColumn: contact_title
+
+		annotation SummarizationSetBy = Automatic
+
+	column address
+		dataType: string
+		lineageTag: 1e534e8d-4788-40e0-a2c4-48d2bbbbfc0e
+		summarizeBy: none
+		sourceColumn: address
+
+		annotation SummarizationSetBy = Automatic
+
+	column city
+		dataType: string
+		lineageTag: 3a9b4fb4-6ba1-483c-8f6c-1f560aeea312
+		summarizeBy: none
+		sourceColumn: city
+
+		annotation SummarizationSetBy = Automatic
+
+	column region
+		dataType: string
+		lineageTag: 1919d29e-bad5-48ba-a5ca-415357d774fa
+		summarizeBy: none
+		sourceColumn: region
+
+		annotation SummarizationSetBy = Automatic
+
+	column postal_code
+		dataType: string
+		lineageTag: 6890c504-151c-46e9-ac25-ca03975d945d
+		summarizeBy: none
+		sourceColumn: postal_code
+
+		annotation SummarizationSetBy = Automatic
+
+	column country
+		dataType: string
+		lineageTag: c3091f59-ff78-4bde-800f-3fa856d95790
+		summarizeBy: none
+		sourceColumn: country
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: string
+		lineageTag: 7a7ef0ee-36fc-4bac-a3f1-3fabc59f0bc4
+		summarizeBy: none
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+	column fax
+		dataType: string
+		lineageTag: b13a3695-c983-4031-b3c2-9ab6fcdfecc9
+		summarizeBy: none
+		sourceColumn: fax
+
+		annotation SummarizationSetBy = Automatic
+
+	column homepage
+		dataType: string
+		lineageTag: af26ef0b-6a2c-4cb1-8b9a-d5bc9e3de025
+		summarizeBy: none
+		sourceColumn: homepage
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim__supplier = m
+		mode: import
+		source =
+				let
+				    Fonte = DatabricksMultiCloud.Catalogs("dbc-fc025aa0-f748.cloud.databricks.com", "sql/1.0/warehouses/a63e50ac4fe4ee88", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    northwind_dev_Database = Fonte{[Name="northwind_dev",Kind="Database"]}[Data],
+				    dev_akilas_rocha_marts_Schema = northwind_dev_Database{[Name="dev_akilas_rocha_marts",Kind="Schema"]}[Data],
+				    dim__supplier_Table = dev_akilas_rocha_marts_Schema{[Name="dim__supplier",Kind="Table"]}[Data]
+				in
+				    dim__supplier_Table
+

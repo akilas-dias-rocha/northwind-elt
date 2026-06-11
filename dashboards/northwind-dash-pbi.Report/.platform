@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "northwind-dash-pbi"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "1609ac0f-d346-43d5-8489-f36aeb0db570"
+  }
+}

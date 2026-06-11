@@ -1,0 +1,55 @@
+relationship 9a0a5649-facb-4f14-85ae-0394e7e45306
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim__date.date_day
+	toColumn: LocalDateTable_7e9f8811-0df9-4c94-a3d1-ff714e255f64.Date
+
+relationship 07274233-e187-437f-9fca-8786f24a71c6
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim__employee.birth_date
+	toColumn: LocalDateTable_f969d416-e3d0-469c-8920-449224b3c99f.Date
+
+relationship b253a1ee-bd0b-4330-b6bc-2cb842227796
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim__employee.hire_date
+	toColumn: LocalDateTable_4d0a1557-665f-4b80-8e3c-a59d8875cd3c.Date
+
+relationship 0637f0f1-0265-4be7-9f3d-1d370955dcf4
+	joinOnDateBehavior: datePartOnly
+	fromColumn: dim_date.date_day
+	toColumn: LocalDateTable_6ae4bfcd-bcf2-44a1-9444-01091e020b64.Date
+
+relationship 162e543f-58dd-46f0-ab82-52163154344b
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct__order.order_date
+	toColumn: LocalDateTable_7984cf0d-944c-4d26-b5a8-53165b525906.Date
+
+relationship 2cc7e4db-6ae3-4fab-935f-1b119666e880
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct__order.required_date
+	toColumn: LocalDateTable_18c6802d-9f3b-4fa6-864f-b4db66910505.Date
+
+relationship 440a250d-c55f-44da-9ffa-15c326e9c5ef
+	joinOnDateBehavior: datePartOnly
+	fromColumn: fct__order.shipped_date
+	toColumn: LocalDateTable_0fb2dd53-3ef5-41ec-9236-deed513038b0.Date
+
+relationship AutoDetected_3b17c1c2-7c64-4063-9cb6-c096c0ca6724
+	fromColumn: fct__order.customer_fk
+	toColumn: dim__customer.customer_id
+
+relationship AutoDetected_2575a4e4-7dac-4e6f-ae91-63487955891e
+	fromColumn: fct__order.employee_fk
+	toColumn: dim__employee.employee_id
+
+relationship AutoDetected_0b537474-188a-4788-8118-4494d4909153
+	fromColumn: dim__product.supplier_fk
+	toColumn: dim__supplier.supplier_id
+
+relationship 459e6680-6ccb-6fcf-7874-10af7bee1856
+	fromColumn: fct__order.product_id
+	toColumn: dim__product.product_id
+
+relationship 452733df-cecd-2086-848b-e705c943bf88
+	fromColumn: fct__order.ship_via_fk
+	toColumn: dim__shipper.shipper_id
+

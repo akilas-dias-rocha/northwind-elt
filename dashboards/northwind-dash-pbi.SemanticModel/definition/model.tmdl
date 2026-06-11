@@ -1,0 +1,34 @@
+model Model
+	culture: pt-BR
+	defaultPowerBIDataSourceVersion: powerBI_V3
+	sourceQueryCulture: pt-BR
+	dataAccessOptions
+		legacyRedirects
+		returnErrorValuesAsNull
+
+annotation __PBI_TimeIntelligenceEnabled = 1
+
+annotation PBI_QueryOrder = ["dim__customer","dim__date","dim__employee","dim__shipper","dim__product","dim__supplier","dim__territory","dim_date","fct__order"]
+
+annotation PBI_ProTooling = ["DevMode"]
+
+ref table dim__customer
+ref table dim__date
+ref table DateTableTemplate_3cc5574d-c650-4f41-829e-43085f81706d
+ref table LocalDateTable_7e9f8811-0df9-4c94-a3d1-ff714e255f64
+ref table dim__employee
+ref table LocalDateTable_f969d416-e3d0-469c-8920-449224b3c99f
+ref table LocalDateTable_4d0a1557-665f-4b80-8e3c-a59d8875cd3c
+ref table dim__shipper
+ref table dim__product
+ref table dim__supplier
+ref table dim__territory
+ref table dim_date
+ref table LocalDateTable_6ae4bfcd-bcf2-44a1-9444-01091e020b64
+ref table fct__order
+ref table LocalDateTable_7984cf0d-944c-4d26-b5a8-53165b525906
+ref table LocalDateTable_18c6802d-9f3b-4fa6-864f-b4db66910505
+ref table LocalDateTable_0fb2dd53-3ef5-41ec-9236-deed513038b0
+
+ref cultureInfo pt-BR
+

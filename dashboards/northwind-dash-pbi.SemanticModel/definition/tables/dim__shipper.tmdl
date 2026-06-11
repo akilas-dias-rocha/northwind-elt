@@ -1,0 +1,39 @@
+table dim__shipper
+	lineageTag: f9df75a0-6ea6-4a89-92b1-647b0c9eb874
+
+	column shipper_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 688fe007-8458-4f7b-84de-21a4226b3388
+		summarizeBy: none
+		sourceColumn: shipper_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column company_name
+		dataType: string
+		lineageTag: 3cf5a4d3-a532-4aaf-b3fb-1d8be8553007
+		summarizeBy: none
+		sourceColumn: company_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column phone
+		dataType: string
+		lineageTag: 3b490b22-1a03-419c-b3ff-89114ad423ca
+		summarizeBy: none
+		sourceColumn: phone
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim__shipper = m
+		mode: import
+		source =
+				let
+				    Fonte = DatabricksMultiCloud.Catalogs("dbc-fc025aa0-f748.cloud.databricks.com", "sql/1.0/warehouses/a63e50ac4fe4ee88", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    northwind_dev_Database = Fonte{[Name="northwind_dev",Kind="Database"]}[Data],
+				    dev_akilas_rocha_marts_Schema = northwind_dev_Database{[Name="dev_akilas_rocha_marts",Kind="Schema"]}[Data],
+				    dim__shipper_Table = dev_akilas_rocha_marts_Schema{[Name="dim__shipper",Kind="Table"]}[Data]
+				in
+				    dim__shipper_Table
+

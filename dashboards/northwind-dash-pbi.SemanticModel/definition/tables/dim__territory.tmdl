@@ -1,0 +1,47 @@
+table dim__territory
+	lineageTag: 6f465b15-385c-40fe-85be-4cd1e1af9f98
+
+	column territory_id
+		dataType: string
+		lineageTag: e5509f91-cb08-48a6-b6fd-025d70ac80f7
+		summarizeBy: none
+		sourceColumn: territory_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column territory_description
+		dataType: string
+		lineageTag: 1adb6b94-8102-44a0-ae2d-2a85964d5a46
+		summarizeBy: none
+		sourceColumn: territory_description
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 46fc27ac-6943-4df5-8e5e-c0a13966e1fe
+		summarizeBy: sum
+		sourceColumn: region_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column region_description
+		dataType: string
+		lineageTag: 7b3f9ee0-2547-49ed-83bb-9c39f67c434f
+		summarizeBy: none
+		sourceColumn: region_description
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dim__territory = m
+		mode: import
+		source =
+				let
+				    Fonte = DatabricksMultiCloud.Catalogs("dbc-fc025aa0-f748.cloud.databricks.com", "sql/1.0/warehouses/a63e50ac4fe4ee88", [Catalog=null, Database=null, QueryTags=null, EnableAutomaticProxyDiscovery=null, Implementation="2.0"]),
+				    northwind_dev_Database = Fonte{[Name="northwind_dev",Kind="Database"]}[Data],
+				    dev_akilas_rocha_marts_Schema = northwind_dev_Database{[Name="dev_akilas_rocha_marts",Kind="Schema"]}[Data],
+				    dim__territory_Table = dev_akilas_rocha_marts_Schema{[Name="dim__territory",Kind="Table"]}[Data]
+				in
+				    dim__territory_Table
+
