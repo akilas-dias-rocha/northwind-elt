@@ -33,7 +33,7 @@ models:
     relation: "{{ target.name in ('prod', 'ci') }}"
     columns: "{{ target.name in ('prod', 'ci') }}"
   northwind_traders_elt:
-    +database: "{% if target.name in ('prod', 'ci') %} northwind_prd {% else %} northwind_dev {% endif %}"
+    +database: "{% if target.name in ('prod', 'ci') %}northwind_prod{% else %}northwind_dev{% endif %}"
     staging:
       +materialized: view
       +schema: staging
@@ -48,7 +48,7 @@ models:
 seeds:
   northwind_traders_elt:
     +file_format: delta
-    +database: "{% if target.name in ('prod', 'ci') %} northwind_prd {% else %} northwind_dev {% endif %}"
+    +database: "{% if target.name in ('prod', 'ci') %}northwind_prod{% else %}northwind_dev{% endif %}"
     +schema: marts
 
 # Configuring snapshots

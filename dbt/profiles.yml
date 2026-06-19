@@ -16,7 +16,6 @@ northwind_traders_elt:
       type: databricks
       threads: 8
       schema: "{{ env_var('PROD_SCHEMA_NAME') }}"
-
       catalog: "{{ env_var('PROD_DATABRICKS_CATALOG') }}"
       host: "{{ env_var('PROD_DATABRICKS_HOST') }}"
       http_path: "{{ env_var('PROD_DATABRICKS_HTTP_PATH') }}"
