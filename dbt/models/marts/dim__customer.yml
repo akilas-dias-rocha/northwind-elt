@@ -4,7 +4,9 @@ models:
   - name: dim__customer
     description: >
       Dimension model containing detailed profile information for all customers, 
-      including corporate names, primary contacts, and complete geographic/address data.
+      including corporate names, primary contacts, and geographic data.
+      This is a sanitized version without PII columns (address, postal_code).
+
     columns:
       - name: customer_id
         description: >
@@ -27,10 +29,6 @@ models:
         description: >
           The job title or role of the primary contact person.
 
-      - name: address
-        description: >
-          The street name and number of the customer's location.
-
       - name: city
         description: >
           The city where the customer is located.
@@ -38,10 +36,6 @@ models:
       - name: region
         description: >
           The state, province, or region of the customer.
-
-      - name: postal_code
-        description: >
-          The postal or ZIP code of the address.
 
       - name: country
         description: >

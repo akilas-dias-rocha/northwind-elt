@@ -8,10 +8,8 @@ with
             , title_of_courtesy
             , birth_date
             , hire_date
-            , address
             , city
             , region
-            , postal_code
             , country
             , home_phone
             , extension

@@ -6,6 +6,8 @@ models:
       Dimension model containing detailed profiles of all company employees. 
       Includes personal details, HR dates, contact information, and organizational hierarchy 
       via a self-referencing relationship (reports_to).
+      This is a sanitized version without PII columns (address, postal_code).
+  
     columns:
       - name: employee_id
         description: >
@@ -42,10 +44,6 @@ models:
         description: >
           The official date the employee was hired by the company.
 
-      - name: address
-        description: >
-          The street address of the employee's residence.
-
       - name: city
         description: >
           The city where the employee resides.
@@ -53,10 +51,6 @@ models:
       - name: region
         description: >
           The state, province, or region of the employee's address.
-
-      - name: postal_code
-        description: >
-          The postal or ZIP code of the employee's residence.
 
       - name: country
         description: >
