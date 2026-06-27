@@ -36,10 +36,6 @@ models:
         description: >
           Title used for formal address (e.g., Mr., Ms., Dr.).
 
-      - name: birth_date
-        description: >
-          The employee's date of birth.
-
       - name: hire_date
         description: >
           The official date the employee was hired by the company.
@@ -55,10 +51,6 @@ models:
       - name: country
         description: >
           The country where the employee lives.
-
-      - name: home_phone
-        description: >
-          The primary landline or home phone number of the employee.
 
       - name: extension
         description: >
