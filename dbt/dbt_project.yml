@@ -32,14 +32,23 @@ models:
   +persist_docs:
     relation: "{{ target.name in ('prod', 'ci') }}"
     columns: "{{ target.name in ('prod', 'ci') }}"
+
   northwind_traders_elt:
     +database: "{% if target.name in ('prod', 'ci') %}northwind_prod{% else %}northwind_dev{% endif %}"
+
     staging:
       +materialized: view
       +schema: staging
+
     intermediate:
       +materialized: view
       +schema: intermediate
+
+    intermediate_pii:
+      +materialized: view
+      +schema: intermediate_pii
+      +tags: "contains_pii"
+
     marts:
       +materialized: table
       +schema: marts
