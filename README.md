@@ -13,28 +13,39 @@ An end-to-end ELT pipeline built on the Northwind Traders database, covering dat
 
 ## Table of Contents
 
-- [Description](#description)
-- [Overview](#overview)
-- [Dataset](#dataset)
-- [Tech Stack](#tech-stack)
-- [Architecture](#architecture)
-- [Pipeline](#pipeline)
-  - [Extraction \& Loading](#extraction--loading)
-  - [Transformation](#transformation)
-- [Data Quality](#data-quality)
-  - [Test Types](#test-types)
-  - [Business Rules](#business-rules)
-- [dbt Models](#dbt-models)
-  - [Staging Models](#staging-models-13)
-  - [Intermediate Models](#intermediate-models-3)
-  - [Marts Models](#marts-models-8)
-- [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
-  - [Installation](#installation)
-  - [Configuration](#configuration)
-  - [Running the Pipeline](#running-the-pipeline)
-- [Project Structure](#project-structure)
-- [Dashboard](#dashboard)
+- [Northwind Traders -- End-to-End ELT Pipeline](#northwind-traders----end-to-end-elt-pipeline)
+  - [Table of Contents](#table-of-contents)
+  - [Description](#description)
+  - [Overview](#overview)
+  - [Dataset](#dataset)
+  - [Tech Stack](#tech-stack)
+  - [Architecture](#architecture)
+  - [Pipeline](#pipeline)
+    - [Extraction \& Loading](#extraction--loading)
+    - [Transformation](#transformation)
+      - [Staging](#staging)
+      - [Intermediate](#intermediate)
+      - [Marts](#marts)
+  - [Data Quality](#data-quality)
+    - [Test Types](#test-types)
+    - [Business Rules](#business-rules)
+  - [Data Privacy \& PII Handling](#data-privacy--pii-handling)
+    - [Overview](#overview-1)
+    - [PII Columns](#pii-columns)
+    - [Sanitized Models](#sanitized-models)
+    - [Configuration](#configuration)
+  - [dbt Models](#dbt-models)
+    - [Staging Models (13)](#staging-models-13)
+    - [Intermediate Models (3)](#intermediate-models-3)
+    - [Intermediate PII Models (2)](#intermediate-pii-models-2)
+    - [Marts Models (8)](#marts-models-8)
+  - [Getting Started](#getting-started)
+    - [Prerequisites](#prerequisites)
+    - [Installation](#installation)
+    - [Configuration](#configuration-1)
+    - [Running the Pipeline](#running-the-pipeline)
+  - [Project Structure](#project-structure)
+  - [Dashboard](#dashboard)
 
 ---
 
@@ -104,6 +115,7 @@ northwind_dev               # Development environment
 northwind_prod              # Production environment
 ├── staging                 # Cleaned and typed source tables
 ├── intermediate            # Business logic and complex joins
+├── intermediate_pii        # Models containing PII (restricted access)
 └── marts                   # Fact and dimension tables (Star Schema)
 ```
 
@@ -187,6 +199,37 @@ These tests are defined in the model YAML files (e.g., `stg__northwind_order_det
 
 ---
 
+## Data Privacy & PII Handling
+
+This project implements a **dual-path strategy** for handling Personally Identifiable Information (PII), ensuring sensitive data is isolated and accessible only when necessary.
+
+### Overview
+
+Models containing PII are isolated in the `intermediate_pii` layer with restricted access. Sanitized versions of these models are provided in the `marts` layer for general consumption, excluding sensitive columns such as addresses, postal codes, birth dates, and phone numbers.
+
+### PII Columns
+
+The following columns are classified as PII and are only available in the `intermediate_pii` layer:
+
+| Model | PII Columns |
+|-------|-------------|
+| `int__customer_pii` | `address`, `postal_code` |
+| `int__employee_pii` | `birth_date`, `address`, `postal_code`, `home_phone` |
+
+### Sanitized Models
+
+The mart models `dim__customer` and `dim__employee` are sanitized versions that exclude PII columns for safe consumption.
+
+### Configuration
+
+PII models are configured with the following settings in `dbt_project.yml`:
+
+- **Tag**: `contains_pii` -- applied to all PII models for selective execution (`dbt run --select tag:contains_pii`)
+- **Schema**: `intermediate_pii` -- isolated from other layers
+- **Materialization**: Views
+
+---
+
 ## dbt Models
 
 ### Staging Models (13)
@@ -218,6 +261,15 @@ Business logic and complex joins preparing data for the Marts layer.
 | `int__order_detail` | Order details enriched with business rules and joins |
 | `int__product` | Product data with inventory and pricing validations |
 | `int__inventory_management` | Inventory metrics and reconciliation logic |
+
+### Intermediate PII Models (2)
+
+Models containing Personally Identifiable Information (PII). These models are isolated in a dedicated schema with restricted access. See [Data Privacy & PII Handling](#data-privacy--pii-handling) for details.
+
+| Model | Description |
+|-------|-------------|
+| `int__customer_pii` | Customer profile with full address and contact details |
+| `int__employee_pii` | Employee profile with personal data and organizational info |
 
 ### Marts Models (8)
 
@@ -335,6 +387,7 @@ northwind-elt/
 │   └── models/
 │       ├── staging/                  # stg_* models -- typed and renamed source tables
 │       ├── intermediate/             # int_* models -- joins and business logic
+│       ├── intermediate_pii/         # int_*_pii models -- PII data (restricted access)
 │       └── marts/                    # fct_* and dim_* models -- Star Schema
 ├── northwind_data/
 │   └── Northwind_db.sqlite           # Source SQLite database
