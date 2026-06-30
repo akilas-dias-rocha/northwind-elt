@@ -64,7 +64,7 @@ with
             , order_details.net_amount
             , orders.freight as total_order_freight
            
-            -- RATEIO DO FRETE: Proporcional ao peso do net_amount do item no pedido
+            -- FREIGHT ALLOCATION: Proportional to the item's net amount weight within the order.
             , case 
                 when order_totals.total_order_net_amount = 0 then 0
                 else round((order_details.net_amount / order_totals.total_order_net_amount) * orders.freight, 2)
