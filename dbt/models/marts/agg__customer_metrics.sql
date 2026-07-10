@@ -19,7 +19,6 @@ with
         select
             customer_fk
             , max(order_date) as last_order_date
-            , count(distinct order_id) as frequency
             , count(distinct order_id) as qnt_orders
             , sum(net_amount) as total_amount
         from orders
@@ -30,14 +29,26 @@ with
         select
             customer.customer_id
             , customer.company_name as customer_name
-            , datediff(current_date, customer_order_summary.last_order_date) as recency
-            , customer_order_summary.frequency
-            , customer_order_summary.total_amount
-            , customer_order_summary.qnt_orders
-            , round(customer_order_summary.total_amount / customer_order_summary.qnt_orders, 2) as average_order_value
+            , coalesce(datediff(current_date, customer_order_summary.last_order_date), 0) as recency
+            , coalesce(customer_order_summary.total_amount, 0) as total_amount
+            , coalesce(customer_order_summary.qnt_orders, 0) as qnt_orders
         from customer
         left join customer_order_summary
             on customer.customer_id = customer_order_summary.customer_fk
     )
 
-select * from customer_metrics
+    , average_order_value as (
+        select
+            customer_metrics.*
+            , case
+                when customer_metrics.qnt_orders = 0 then 0
+                else round(customer_metrics.total_amount / customer_metrics.qnt_orders, 2)
+              end as average_order_value
+            , case
+                when customer_metrics.qnt_orders = 0 then FALSE
+                else TRUE
+              end as is_active
+        from customer_metrics
+    )
+
+select * from average_order_value

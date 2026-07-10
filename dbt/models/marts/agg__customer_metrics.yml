@@ -18,12 +18,12 @@ models:
           - not_null
 
       - name: recency
-        description: Number of days since the customer's last order
+        description: Number of days since the customer's last order. 0 if customer has no orders.
         data_tests:
           - not_null
 
-      - name: frequency
-        description: Total number of distinct orders placed by the customer
+      - name: is_active
+        description: Indicates if the customer has placed at least one order (True/False)
         data_tests:
           - not_null
 
@@ -38,6 +38,6 @@ models:
           - not_null
 
       - name: average_order_value
-        description: Average net amount per order (total_amount / qnt_orders)
+        description: Average net amount per order (total_amount / qnt_orders). Returns 0 if no orders.
         data_tests:
           - not_null
