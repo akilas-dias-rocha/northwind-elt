@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: agg__sales_per_product
+    description: >
+      Aggregated sales metrics with granularity at the product and month level (one row per product per month).
+      Useful for product sales performance analysis, trend identification, and demand forecasting.
+    columns:
+      - name: product_month_sk
+        description: Surrogate key generated from product_id, year, and month
+        data_tests:
+          - unique
+          - not_null
+
+      - name: product_id
+        description: Unique product identifier
+        data_tests:
+          - not_null
+
+      - name: year
+        description: Calendar year of the sale
+        data_tests:
+          - not_null
+
+      - name: month
+        description: Calendar month of the sale (1-12)
+        data_tests:
+          - not_null
+
+      - name: total_sales
+        description: Sum of net_amount for the product in the given month.
+        data_tests:
+          - not_null
+
+      - name: total_quantity
+        description: Sum of quantity sold for the product in the given month.
+        data_tests:
+          - not_null
