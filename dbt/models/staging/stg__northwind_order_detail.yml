@@ -32,7 +32,7 @@ models:
         data_tests:
           - not_null
           - relationships:
-              to: ref('stg__northwind_products')
+              to: ref('stg__northwind_product')
               field: product_id
         description: >
           The identifier for the product associated with the order detail. This field is used to link the order

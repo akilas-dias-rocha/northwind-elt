@@ -27,7 +27,7 @@ models:
         data_tests:
           - not_null
           - relationships:
-              to: ref('stg__northwind_suppliers')
+              to: ref('stg__northwind_supplier')
               field: supplier_id
         description: >
           The identifier for the supplier of the product. This field links the product
@@ -38,7 +38,7 @@ models:
         data_tests:
           - not_null
           - relationships:
-              to: ref('stg__northwind_categories')
+              to: ref('stg__northwind_category')
               field: category_id
         description: >
           The identifier for the category of the product. This field links the product

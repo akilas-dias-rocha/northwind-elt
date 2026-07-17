@@ -19,7 +19,7 @@ models:
         data_tests:
           - not_null
           - relationships:
-              to: ref('stg__northwind_customers')
+              to: ref('stg__northwind_customer')
               field: customer_id
         description: >
           The identifier for the customer who placed the order. This field links the order
@@ -30,7 +30,7 @@ models:
         data_tests:
           - not_null
           - relationships:
-              to: ref('stg__northwind_employees')
+              to: ref('stg__northwind_employee')
               field: employee_id
         description: >
           The identifier for the employee who handled the order. This field links the order
