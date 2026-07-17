@@ -19,6 +19,7 @@ with
             , cast(phone as string) as phone
             , cast(fax as string) as fax
             , cast(homepage as string) as homepage
+            , cast(_updated_at as timestamp) as _updated_at
         from {{ source('northwind', 'supplier') }}
     )
 

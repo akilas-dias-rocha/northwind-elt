@@ -25,3 +25,8 @@ models:
         data_type: string
         description: >
           The phone number of the shipper. This field is used for communication purposes.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

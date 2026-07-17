@@ -21,6 +21,7 @@ with
             , cast(shipregion as string) as ship_region
             , cast(shippostalcode as string) as ship_postal_code
             , cast(shipcountry as string) as ship_country
+            , cast(_updated_at as timestamp) as _updated_at
         from {{ source('northwind', 'order') }}
     )
 

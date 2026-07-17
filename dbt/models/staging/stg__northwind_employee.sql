@@ -25,6 +25,7 @@ with
             , cast(notes as string) as notes
             , cast(reportsto as integer) as reports_to
             , cast(photopath as string) as photo_path
+            , cast(_updated_at as timestamp) as _updated_at
         from {{ source('northwind', 'employee') }}
     )
 

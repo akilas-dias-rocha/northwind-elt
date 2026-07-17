@@ -66,3 +66,8 @@ models:
               strictly: false
         description: >
           The discount applied to the order detail. This field is used to calculate the discounted cost of the order detail.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

@@ -70,3 +70,8 @@ models:
         data_type: string
         description: >
           The homepage URL of the supplier company.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

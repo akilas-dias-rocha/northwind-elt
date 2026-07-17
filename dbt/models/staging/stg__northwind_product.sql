@@ -17,6 +17,7 @@ with
             , cast(unitsonorder as integer) as units_on_order
             , cast(reorderlevel as integer) as reorder_level
             , cast(discontinued as boolean) as is_discontinued
+            , cast(_updated_at as timestamp) as _updated_at
         from {{ source('northwind', 'product') }}
     )
 

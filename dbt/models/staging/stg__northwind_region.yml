@@ -22,3 +22,8 @@ models:
         description: >
           The description of the region. This field is used to provide a human-readable
           name for the region and is often used in reporting and analysis.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

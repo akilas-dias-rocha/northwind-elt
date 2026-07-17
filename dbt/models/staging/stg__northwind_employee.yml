@@ -107,3 +107,8 @@ models:
         data_type: string
         description: >
           The path to the employee's photo. This field is used for display purposes.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

@@ -19,3 +19,8 @@ models:
         data_type: string
         description: >
           A description of the customer demographic.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

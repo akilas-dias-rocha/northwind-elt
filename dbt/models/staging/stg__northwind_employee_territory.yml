@@ -36,3 +36,8 @@ models:
         description: >
           The identifier for the territory. This field links the employee territory
           to a specific territory in the `territories` table.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

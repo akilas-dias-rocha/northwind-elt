@@ -96,3 +96,8 @@ models:
         description: >
           A flag indicating whether the product is discontinued. This field is used for inventory management
           and reporting purposes.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

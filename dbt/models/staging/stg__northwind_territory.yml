@@ -31,3 +31,8 @@ models:
         description: >
           The identifier for the region to which the territory belongs. This field links the territory
           to a specific region in the `regions` table.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.

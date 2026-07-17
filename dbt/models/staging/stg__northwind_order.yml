@@ -104,3 +104,8 @@ models:
         description: >
           The country where the order will be shipped. This field is used for communication and delivery
           purposes.
+
+      - name: _updated_at
+        data_type: timestamp
+        description: >
+          Timestamp when the record was last updated in the source system.
