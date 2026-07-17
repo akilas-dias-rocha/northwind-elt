@@ -8,6 +8,10 @@ sources:
       This is the source for the Northwind database, which contains data about a 
       company that sells products to customers around the world. The database includes tables 
       for categories, customers, employees, orders, products, and more.
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 48, period: hour}
+    loaded_at_field: _updated_at
     tables:
       - name: category
         description: >
