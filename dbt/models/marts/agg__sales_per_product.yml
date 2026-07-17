@@ -17,6 +17,12 @@ models:
         data_tests:
           - not_null
 
+      - name: supplier_fk
+        data_tests:
+          - not_null
+        description: >
+          Foreign key linking to the supplier of the product.
+
       - name: year
         description: Calendar year of the sale
         data_tests:

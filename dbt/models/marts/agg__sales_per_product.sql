@@ -1,6 +1,7 @@
 with
     products as (
         select product_id
+        , supplier_fk
         from {{ ref('int__product') }}
     ),
 
@@ -14,6 +15,7 @@ with
     product_months as (
         select
             products.product_id,
+            products.supplier_fk,
             months.year,
             months.month
         from products
@@ -64,6 +66,7 @@ with
     sales_agg_not_null as (
         select
             product_months.product_id,
+            product_months.supplier_fk,
             product_months.year,
             product_months.month,
             coalesce(sales_agg.total_sales, 0) as total_sales,
