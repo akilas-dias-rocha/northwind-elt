@@ -23,25 +23,10 @@ sources:
           This table contains information about the customers of the company. 
           Each customer has a unique ID, a name, and contact information.
 
-      - name: customercustomerdemo
-        description: >
-          This table links customers to their demographic information. 
-          Each record links a customer to a specific demographic category.
-
-      - name: customerdemographic
-        description: >
-          Demographic information about customers. 
-          Each record contains information about a specific demographic category.
-
       - name: employee
         description: >
           Employees of the company. 
           Each employee has a unique ID, a name, and job title.
-
-      - name: employeeterritory
-        description: >
-          Territories assigned to employees. 
-          Each record links an employee to a specific territory.
 
       - name: order
         description: >
@@ -58,11 +43,6 @@ sources:
           Products sold by the company. 
           Each product has a unique ID, a name, and a description.
 
-      - name: region
-        description: >
-          Regions in which the company operates. 
-          Each region has a unique ID and a name.
-
       - name: shipper
         description: >
           Shippers who deliver orders to customers. 
@@ -72,8 +52,3 @@ sources:
         description: >
           Suppliers who provide products to the company. 
           Each supplier has a unique ID, a name, and contact information.
-          
-      - name: territory
-        description: >
-          Territories in which the company operates. 
-          Each territory has a unique ID and a name.
