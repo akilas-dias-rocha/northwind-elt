@@ -32,6 +32,8 @@ models:
           The commercial name of the product.
 
       - name: category_name
+        data_tests:
+          - not_null
         description: >
           The name of the product category.
 
@@ -50,3 +52,9 @@ models:
       - name: is_discontinued
         description: >
           Boolean flag indicating whether the product is active (false) or no longer being replenished (true).
+      
+      - name: _updated_at
+        data_tests:
+          - not_null
+        description: >
+          Timestamp when the record was last updated in the source system.

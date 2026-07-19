@@ -79,3 +79,10 @@ models:
         description: >
           The final total value of the line item after discounts have been deducted. Calculated
           as gross_amount minus discount_amount.
+
+      - name: _updated_at
+        data_type: timestamp
+        data_tests:
+          - not_null
+        description: >
+          Timestamp when the record was last updated in the source system.

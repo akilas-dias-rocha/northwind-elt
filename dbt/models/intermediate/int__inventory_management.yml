@@ -71,3 +71,9 @@ models:
           - 'Out of Stock': When units_in_stock is 0.
           - 'Reorder': When the product stock falls below or equals the reorder level.
           - 'In Stock': When the product stock is above the reorder level.
+      
+      - name: _updated_at
+        data_tests:
+          - not_null
+        description: >
+          Timestamp when the record was last updated in the source system.

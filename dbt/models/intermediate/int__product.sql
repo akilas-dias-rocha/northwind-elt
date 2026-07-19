@@ -8,6 +8,7 @@ with
             , quantity_per_unit
             , unit_price
             , is_discontinued
+            , _updated_at
         from {{ ref('stg__northwind_product') }}
     )
     ,
@@ -30,6 +31,7 @@ with
             , product.quantity_per_unit
             , product.unit_price
             , product.is_discontinued
+            , product._updated_at
         from product
         left join category
             on product.category_fk = category.category_id
