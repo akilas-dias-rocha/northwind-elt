@@ -1,3 +1,12 @@
+{{
+    config(
+        materialized='incremental',
+        unique_key='order_detail_id',
+        incremental_strategy='merge',
+        on_schema_change='sync_all_columns'
+    )
+}}
+
 with
     orders as (
         select
@@ -15,6 +24,7 @@ with
             , ship_region
             , ship_postal_code
             , ship_country
+            , _updated_at
         from {{ ref('stg__northwind_order') }}
     )
 
@@ -29,6 +39,7 @@ with
             , gross_amount
             , discount_amount
             , net_amount
+            , _updated_at
         from {{ ref('int__order_detail') }}
     )
 
@@ -63,13 +74,13 @@ with
             , order_details.gross_amount
             , order_details.net_amount
             , orders.freight as total_order_freight
-           
+
             -- FREIGHT ALLOCATION: Proportional to the item's net amount weight within the order.
-            , case 
+            , case
                 when order_totals.total_order_net_amount = 0 then 0
                 else round((order_details.net_amount / order_totals.total_order_net_amount) * orders.freight, 2)
-              end as allocated_freight
-           
+            end as allocated_freight
+
             -- Ship details
             , orders.ship_name
             , orders.ship_address
@@ -77,9 +88,15 @@ with
             , orders.ship_region
             , orders.ship_postal_code
             , orders.ship_country
+            , greatest(orders._updated_at, order_details._updated_at) as _updated_at
         from orders
         left join order_details on orders.order_id = order_details.order_id
         left join order_totals on orders.order_id = order_totals.order_id
     )
 
+
 select * from order_with_details
+
+{% if is_incremental() %}
+where _updated_at > (select coalesce(max(_updated_at), '1900-01-01') from {{ this }})
+{% endif %}

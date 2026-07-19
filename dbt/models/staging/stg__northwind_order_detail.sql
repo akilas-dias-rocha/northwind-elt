@@ -1,6 +1,10 @@
 {{
     config(
-        alias='order_detail'
+        alias='order_detail',
+        materialized='incremental',
+        unique_key='order_detail_id',
+        incremental_strategy='merge',
+        on_schema_change='sync_all_columns'
     )
 }}
 
@@ -18,3 +22,7 @@ with
     )
 
 select * from renamed
+
+{% if is_incremental() %}
+where _updated_at > (select coalesce(max(_updated_at), '1900-01-01') from {{ this }})
+{% endif %}
