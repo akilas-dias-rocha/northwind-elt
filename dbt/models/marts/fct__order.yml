@@ -113,3 +113,9 @@ models:
       - name: ship_country
         description: >
           The destination delivery country.
+
+      - name: _updated_at
+        data_tests:
+          - not_null
+        description: >
+          Timestamp when the record was last updated in the source system.
