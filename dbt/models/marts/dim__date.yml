@@ -3,8 +3,8 @@ version: 2
 models:
   - name: dim__date
     description: >
-      Time dimension (date spine) model that generates a continuous sequence of dates starting from 2012-01-01 
-      up to January 1st of two years into the future from the current date. It includes pre-calculated calendar 
+      Time dimension (date spine) model that generates a continuous sequence of dates starting from 2012-07-01 
+      up to 2014-07-01. It includes pre-calculated calendar 
       attributes to simplify time-based reporting and aggregations.
     columns:
       - name: date_day

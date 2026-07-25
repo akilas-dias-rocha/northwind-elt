@@ -2,8 +2,8 @@ with
     date_spine_raw as (
         {{ dbt_utils.date_spine(
             datepart="day",
-            start_date="cast('2012-01-01' as date)",
-            end_date="make_date(year(current_date) + 2, 1, 1)"
+            start_date="cast('2012-07-01' as date)",
+            end_date="cast('2014-07-01' as date)"
             )
         }}
     )
