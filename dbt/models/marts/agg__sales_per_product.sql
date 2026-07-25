@@ -8,7 +8,8 @@ with
     months as (
         select distinct
             year,
-            month
+            month,
+            quarter
         from {{ ref('dim__date') }}
     ),
 
@@ -17,7 +18,8 @@ with
             products.product_id,
             products.supplier_fk,
             months.year,
-            months.month
+            months.month,
+            months.quarter
         from products
         cross join months
     ),
@@ -36,7 +38,8 @@ with
         select
             date_day,
             month,
-            year
+            year,
+            quarter
         from {{ ref('dim__date') }}
     ),
 
@@ -46,7 +49,8 @@ with
             order_detail.net_amount,
             order_detail.quantity,
             dates.year,
-            dates.month
+            dates.month,
+            dates.quarter
         from order_detail
         inner join dates
             on order_detail.order_date = dates.date_day
@@ -57,10 +61,11 @@ with
             product_id,
             year,
             month,
+            quarter,
             sum(net_amount) as total_sales,
             sum(quantity) as total_quantity
         from order_detail_with_dates
-        group by product_id, year, month
+        group by product_id, year, month, quarter
     ),
 
     sales_agg_not_null as (
@@ -69,6 +74,7 @@ with
             product_months.supplier_fk,
             product_months.year,
             product_months.month,
+            product_months.quarter,
             coalesce(sales_agg.total_sales, 0) as total_sales,
             coalesce(sales_agg.total_quantity, 0) as total_quantity
         from product_months
@@ -76,6 +82,7 @@ with
             on product_months.product_id = sales_agg.product_id
             and product_months.year = sales_agg.year
             and product_months.month = sales_agg.month
+            and product_months.quarter = sales_agg.quarter
     ),
 
     add_surrogate_key as (

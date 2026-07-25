@@ -33,6 +33,11 @@ models:
         data_tests:
           - not_null
 
+      - name: quarter
+        description: Calendar quarter of the sale (1-4)
+        data_tests:
+          - not_null
+
       - name: total_sales
         description: Sum of net_amount for the product in the given month.
         data_tests:
