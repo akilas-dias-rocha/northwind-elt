@@ -11,7 +11,7 @@ with
             , reorder_level
             , is_discontinued
             , inventory_status
-            , _updated_at
+            , cast(_updated_at as date) as _updated_at
         from {{ ref('int__inventory_management') }}
     )
 
